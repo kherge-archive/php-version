@@ -2,7 +2,7 @@
     "name": "herrera-io/version",
     "description": "A library for creating, editing, and comparing semantic versioning numbers.",
     "keywords": ["semantic", "version"],
-    "homepage": "http://herrera-io.github.com/php-version",
+    "homepage": "http://github.com/herrera-io/php-version",
     "license": "MIT",
     "authors": [
         {
