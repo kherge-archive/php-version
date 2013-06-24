@@ -44,7 +44,19 @@ class ComparatorTest extends TestCase
             array('0.0.0-b', '0.0.0-a', Comparator::GREATER_THAN),
 
             array('0.0.0-a.b.c', '0.0.0-a.1', Comparator::GREATER_THAN),
-            array('0.0.0-1.2.b', '0.0.0-1.2', Comparator::GREATER_THAN)
+            array('0.0.0-1.2.b', '0.0.0-1.2', Comparator::GREATER_THAN),
+
+            array('0.0.0-rc', '0.0.0-beta', Comparator::GREATER_THAN),
+            array('0.0.0-beta', '0.0.0-alpha', Comparator::GREATER_THAN),
+
+            // semver.org precedence expectations
+            array('1.0.0', '1.0.0-rc.1', Comparator::GREATER_THAN),
+            array('1.0.0-rc.1', '1.0.0-beta.11', Comparator::GREATER_THAN),
+            array('1.0.0-beta.11', '1.0.0-beta.2', Comparator::GREATER_THAN),
+            array('1.0.0-beta.2', '1.0.0-beta', Comparator::GREATER_THAN),
+            array('1.0.0-beta', '1.0.0-alpha.beta', Comparator::GREATER_THAN),
+            array('1.0.0-alpha.beta', '1.0.0-alpha.1', Comparator::GREATER_THAN),
+            array('1.0.0-alpha.1', '1.0.0-alpha', Comparator::GREATER_THAN),
         );
     }
 
@@ -61,7 +73,19 @@ class ComparatorTest extends TestCase
             array('0.0.0-a', '0.0.0-b', Comparator::LESS_THAN),
 
             array('0.0.0-a.1', '0.0.0-a.b.c', Comparator::LESS_THAN),
-            array('0.0.0-1.2', '0.0.0-1.2.b', Comparator::LESS_THAN)
+            array('0.0.0-1.2', '0.0.0-1.2.b', Comparator::LESS_THAN),
+
+            array('0.0.0-alpha', '0.0.0-beta', Comparator::LESS_THAN),
+            array('0.0.0-beta', '0.0.0-rc', Comparator::LESS_THAN),
+
+            // semver.org precedence expectations
+            array('1.0.0-alpha', '1.0.0-alpha.1', Comparator::LESS_THAN),
+            array('1.0.0-alpha.1', '1.0.0-alpha.beta', Comparator::LESS_THAN),
+            array('1.0.0-alpha.beta', '1.0.0-beta', Comparator::LESS_THAN),
+            array('1.0.0-beta', '1.0.0-beta.2', Comparator::LESS_THAN),
+            array('1.0.0-beta.2', '1.0.0-beta.11', Comparator::LESS_THAN),
+            array('1.0.0-beta.11', '1.0.0-rc.1', Comparator::LESS_THAN),
+            array('1.0.0-rc.1', '1.0.0', Comparator::LESS_THAN),
         );
     }
 
