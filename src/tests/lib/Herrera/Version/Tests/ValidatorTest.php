@@ -39,6 +39,9 @@ class ValidatorTest extends TestCase
             array('0.0.0+!'),
 
             array('0.0.0+0+0'),
+            array('0.0.0-00.1'),
+
+            array('00.00.00'),
         );
     }
 
