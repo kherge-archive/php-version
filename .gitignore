@@ -4,3 +4,4 @@
 /src/vendors/
 
 /composer.lock
+/*.iml
