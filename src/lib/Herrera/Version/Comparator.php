@@ -160,7 +160,13 @@ class Comparator
                 return $y;
             }
 
-            return strcmp($l[$i], $r[$i]);
+            $result = strcmp($l[$i], $r[$i]);
+
+            if ($result > 0) {
+                return $x;
+            } elseif ($result < 0) {
+                return $y;
+            }
         }
 
         return self::EQUAL_TO;
