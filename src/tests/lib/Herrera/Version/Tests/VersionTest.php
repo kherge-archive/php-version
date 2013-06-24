@@ -104,6 +104,15 @@ class VersionTest extends TestCase
         $this->assertSame(array('pre', '1'), $this->version->getPreRelease());
     }
 
+    public function testIsStable()
+    {
+        $this->assertFalse($this->version->isStable());
+
+        $version = new Version();
+
+        $this->assertTrue($version->isStable());
+    }
+
     protected function setUp()
     {
         $this->version = new Version(

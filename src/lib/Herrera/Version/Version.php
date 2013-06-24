@@ -116,4 +116,14 @@ class Version
     {
         return $this->preRelease;
     }
+
+    /**
+     * Checks if the version number is stable.
+     *
+     * @return boolean TRUE if it is stable, FALSE if not.
+     */
+    public function isStable()
+    {
+        return empty($this->preRelease);
+    }
 }
