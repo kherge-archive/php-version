@@ -18,7 +18,8 @@ class ValidatorTest extends TestCase
     {
         return array(
             array('0x1'),
-            array('a')
+            array('a'),
+            array('00')
         );
     }
 
@@ -58,7 +59,8 @@ class ValidatorTest extends TestCase
     public function getValidNumbers()
     {
         return array(
-            array('01'),
+            array(0),
+            array('0'),
             array('1'),
             array(1)
         );

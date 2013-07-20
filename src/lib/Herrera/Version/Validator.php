@@ -40,7 +40,7 @@ class Validator
      */
     public static function isNumber($number)
     {
-        return (true == preg_match('/^\d+$/', $number));
+        return (true == preg_match('/^(0|[1-9]\d*)$/', $number));
     }
 
     /**
