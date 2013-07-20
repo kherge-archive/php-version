@@ -17,7 +17,7 @@ class Validator
     /**
      * The regular expression for a valid semantic version number.
      */
-    const VERSION_REGEX = '/^\d+\.\d+\.\d+(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/';
+    const VERSION_REGEX = '/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.\d+(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/';
 
     /**
      * Checks if a identifier is valid.
