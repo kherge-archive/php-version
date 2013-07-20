@@ -39,8 +39,10 @@ class ValidatorTest extends TestCase
             array('0.0.0+!'),
 
             array('0.0.0+0+0'),
-            array('0.0.0-00.1'),
 
+            array('00.0.0'),
+            array('0.00.0'),
+            array('0.0.00'),
             array('00.00.00'),
         );
     }
@@ -81,6 +83,11 @@ class ValidatorTest extends TestCase
             array('0.0.0-a-a'),
             array('0.0.0-a+a'),
             array('0.0.0+a-a'),
+
+            array('10.0.0'),
+            array('0.10.0'),
+            array('0.0.10'),
+            array('10.10.10')
         );
     }
 
