@@ -33,7 +33,7 @@ Documentation
     - [Validating][]
 
 [Build Status]: https://secure.travis-ci.org/herrera-io/php-version.png?branch=master
-[Semantic Versioning]: http://semver.org/
+[Semantic Versioning]: http://semver.org/spec/v2.0.0.html
 [Installing]: doc/00-Installing.md
 [Building]: doc/01-Building.md
 [Comparing]: doc/02-Comparing.md
