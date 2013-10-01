@@ -4,7 +4,7 @@ Version
 [![Build Status]](http://travis-ci.org/herrera-io/php-version)
 
 Version is a library for creating, editing, and comparing semantic version
-numbers. Currently, v2.0.0-rc.2 of the [Semantic Versioning][] specification
+numbers. Currently, v2.0.0 of the [Semantic Versioning][] specification
 is supported.
 
 ```php
