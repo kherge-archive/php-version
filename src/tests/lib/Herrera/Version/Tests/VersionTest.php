@@ -113,6 +113,11 @@ class VersionTest extends TestCase
         $this->assertTrue($version->isStable());
     }
 
+    public function testToString()
+    {
+        $this->assertEquals('1.2.3-pre.1+build.1', (string) $this->version);
+    }
+
     protected function setUp()
     {
         $this->version = new Version(

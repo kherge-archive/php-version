@@ -126,4 +126,14 @@ class Version
     {
         return empty($this->preRelease);
     }
+
+    /**
+     * Returns string representation.
+     *
+     * @return string The string representation.
+     */
+    public function __toString()
+    {
+        return Dumper::toString($this);
+    }
 }
