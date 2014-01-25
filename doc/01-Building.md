@@ -10,7 +10,7 @@ Creating a Builder
 
 ### Fresh Start
 
-- `Herrera\Version\Builder create()`
+- `Herrera\Version\Builder::create()`
 
 To create a fresh version builder, call `Builder::create()`:
 
@@ -25,7 +25,7 @@ Importing Existing Versions
 
 ### From Components (Advanced)
 
-- `Herrera\Version\Builder importComponents(array $components)`
+- `Herrera\Version\Builder::importComponents(array $components)`
 
 If you have extracted the components of a version string representation using
 the `Herrera\Version\Parser::toComponents()` method, you can call the method,
@@ -46,7 +46,7 @@ to their default values in the builder:
 
 ### From a String Representation
 
-- `Herrera\Version\Builder importString(str $version)`
+- `Herrera\Version\Builder::importString(string $version)`
 
 To simplify the parsing and building of versions, the `importString()` method
 exists for your convenience:
@@ -67,7 +67,7 @@ The caveat about missing version information applies.
 
 ### From an Existing Version
 
-- `Herrera\Version\Builder importVersion(Herrera\Version\Version $version)`
+- `Herrera\Version\Builder::importVersion(Herrera\Version\Version $version)`
 
 If you already have an instance of `Herrera\Version\Version`, you can import
 that directly to the builder:
@@ -79,11 +79,11 @@ $builder->importVersion($version);
 Changing Version Information
 ----------------------------
 
-- `Herrera\Version\Builder setMajor(int $number)`
-- `Herrera\Version\Builder setMinor(int $number)`
-- `Herrera\Version\Builder setPatch(int $number)`
-- `Herrera\Version\Builder setPreRelease(array $identifiers)`
-- `Herrera\Version\Builder setBuild(array $identifiers)`
+- `Herrera\Version\Builder::setMajor(int $number)`
+- `Herrera\Version\Builder::setMinor(int $number)`
+- `Herrera\Version\Builder::setPatch(int $number)`
+- `Herrera\Version\Builder::setPreRelease(array $identifiers)`
+- `Herrera\Version\Builder::setBuild(array $identifiers)`
 
 You may use any of the above methods to directly alter the version information.
 Note that you may only use integer values for `setMajor()`, `setMinor()`, and
@@ -92,7 +92,7 @@ numbers are converted to integers.
 
 To automatically apply the logic defined in the specification, you may use:
 
-- `Herrera\Version\Builder incrementMajor(int $amount = 1)` &mdash; increments
+- `Herrera\Version\Builder::incrementMajor(int $amount = 1)` &mdash; increments
   the major version number by `$amount`, and resets the minor and patch version
   numbers to zero
 - `Herrera\Version\Builder incrementMinor(int $amount = 1)` &mdash; increments
@@ -101,7 +101,7 @@ To automatically apply the logic defined in the specification, you may use:
 
 For the sake of completeness and convenience, the method
 
-- `Herrera\Version\Builder incrementPatch(int $amount = 1)`
+- `Herrera\Version\Builder::incrementPatch(int $amount = 1)`
 
 has been added. It will simply increment the patch version number by the
 `$amount` specified.
