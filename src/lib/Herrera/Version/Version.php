@@ -124,7 +124,7 @@ class Version
      */
     public function isStable()
     {
-        return empty($this->preRelease);
+        return empty($this->preRelease) && $this->major !== 0;
     }
 
     /**

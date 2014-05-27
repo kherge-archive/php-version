@@ -110,6 +110,10 @@ class VersionTest extends TestCase
 
         $version = new Version();
 
+        $this->assertFalse($version->isStable());
+
+        $version = new Version(1);
+
         $this->assertTrue($version->isStable());
     }
 
