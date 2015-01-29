@@ -34,7 +34,7 @@ class Parser
     /**
      * The pre-release version number component.
      */
-    const PRE_RELEASE = 'pre';
+    const PRE_RELEASE = 'pre-release';
 
     /**
      * Returns a Version builder for the string representation.
@@ -108,7 +108,7 @@ class Parser
             $components['major'],
             $components['minor'],
             $components['patch'],
-            $components['pre'],
+            $components['pre-release'],
             $components['build']
         );
     }

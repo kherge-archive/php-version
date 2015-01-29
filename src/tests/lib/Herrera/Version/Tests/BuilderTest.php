@@ -94,7 +94,7 @@ class BuilderTest extends TestCase
     {
         $this->assertSame(
             $this->builder,
-            $this->builder->importString('5.6.7-pre.2.3+build.2.3')
+            $this->builder->importString('5.6.7-pre-release.2.3+build.2.3')
         );
 
         $this->assertSame(array('build', '2', '3'), $this->builder->getBuild());
@@ -102,7 +102,7 @@ class BuilderTest extends TestCase
         $this->assertSame(6, $this->builder->getMinor());
         $this->assertSame(7, $this->builder->getPatch());
         $this->assertSame(
-            array('pre', '2', '3'),
+            array('pre-release', '2', '3'),
             $this->builder->getPreRelease()
         );
     }
@@ -116,7 +116,7 @@ class BuilderTest extends TestCase
                     5,
                     6,
                     7,
-                    array('pre', '2', '3'),
+                    array('pre-release', '2', '3'),
                     array('build', '2', '3')
                 )
             )
@@ -127,7 +127,7 @@ class BuilderTest extends TestCase
         $this->assertSame(6, $this->builder->getMinor());
         $this->assertSame(7, $this->builder->getPatch());
         $this->assertSame(
-            array('pre', '2', '3'),
+            array('pre-release', '2', '3'),
             $this->builder->getPreRelease()
         );
     }
@@ -264,7 +264,7 @@ class BuilderTest extends TestCase
 
     public function testSetPreRelease()
     {
-        $pre = array('pre', '1');
+        $pre = array('pre-release', '1');
 
         $this->assertSame($this->builder, $this->builder->setPreRelease($pre));
 

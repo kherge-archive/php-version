@@ -35,7 +35,7 @@ class VersionTest extends TestCase
         $this->assertSame(2, $this->getPropertyValue($this->version, 'minor'));
         $this->assertSame(3, $this->getPropertyValue($this->version, 'patch'));
         $this->assertSame(
-            array('pre', '1'),
+            array('pre-release', '1'),
             $this->getPropertyValue($this->version, 'preRelease')
         );
         $this->assertSame(
@@ -101,7 +101,7 @@ class VersionTest extends TestCase
         $version = new Version();
 
         $this->assertSame(array(), $version->getPreRelease());
-        $this->assertSame(array('pre', '1'), $this->version->getPreRelease());
+        $this->assertSame(array('pre-release', '1'), $this->version->getPreRelease());
     }
 
     public function testIsStable()
@@ -119,7 +119,7 @@ class VersionTest extends TestCase
 
     public function testToString()
     {
-        $this->assertEquals('1.2.3-pre.1+build.1', (string) $this->version);
+        $this->assertEquals('1.2.3-pre-release.1+build.1', (string) $this->version);
     }
 
     protected function setUp()
@@ -128,7 +128,7 @@ class VersionTest extends TestCase
             1,
             2,
             3,
-            array('pre', '1'),
+            array('pre-release', '1'),
             array('build', '1')
         );
     }
