@@ -73,7 +73,7 @@ class Parser
         }
 
         if (false !== strpos($version, '-')) {
-            list($version, $pre) = explode('-', $version);
+            list($version, $pre) = preg_split('/-/', $version, 2);
 
             $pre = explode('.', $pre);
         }
