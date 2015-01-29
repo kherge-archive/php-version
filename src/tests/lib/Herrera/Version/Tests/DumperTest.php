@@ -21,7 +21,7 @@ class DumperTest extends TestCase
                 Parser::MAJOR => 1,
                 Parser::MINOR => 2,
                 Parser::PATCH => 3,
-                Parser::PRE_RELEASE => array('pre', '1'),
+                Parser::PRE_RELEASE => array('pre-release', '1'),
                 Parser::BUILD => array('build', '1'),
             ),
             Dumper::toComponents($this->version)
@@ -31,7 +31,7 @@ class DumperTest extends TestCase
     public function testToString()
     {
         $this->assertEquals(
-            '1.2.3-pre.1+build.1',
+            '1.2.3-pre-release.1+build.1',
             Dumper::toString($this->version)
         );
     }
@@ -42,7 +42,7 @@ class DumperTest extends TestCase
             1,
             2,
             3,
-            array('pre', '1'),
+            array('pre-release', '1'),
             array('build', '1')
         );
     }

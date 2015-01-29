@@ -7,28 +7,34 @@ use Herrera\Version\Parser;
 
 class ParserTest extends TestCase
 {
-    public function testToBuilder()
+    /**
+     * @dataProvider getValidVersions
+     */
+    public function testToBuilder($expected, $major, $minor, $patch, $preRelease, $build)
     {
-        $builder = Parser::toBuilder('1.2.3-pre.1+build.1');
+        $builder = Parser::toBuilder($expected);
 
-        $this->assertSame(1, $builder->getMajor());
-        $this->assertSame(2, $builder->getMinor());
-        $this->assertSame(3, $builder->getPatch());
-        $this->assertSame(array('pre', '1'), $builder->getPreRelease());
-        $this->assertSame(array('build', '1'), $builder->getBuild());
+        $this->assertSame($major, $builder->getMajor());
+        $this->assertSame($minor, $builder->getMinor());
+        $this->assertSame($patch, $builder->getPatch());
+        $this->assertSame($preRelease, $builder->getPreRelease());
+        $this->assertSame($build, $builder->getBuild());
     }
 
-    public function testToComponents()
+    /**
+     * @dataProvider getValidVersions
+     */
+    public function testToComponents($expected, $major, $minor, $patch, $preRelease, $build)
     {
         $this->assertSame(
             array(
-                Parser::MAJOR => 1,
-                Parser::MINOR => 2,
-                Parser::PATCH => 3,
-                Parser::PRE_RELEASE => array('pre', '1'),
-                Parser::BUILD => array('build', '1')
+                Parser::MAJOR => $major,
+                Parser::MINOR => $minor,
+                Parser::PATCH => $patch,
+                Parser::PRE_RELEASE => $preRelease,
+                Parser::BUILD => $build
             ),
-            Parser::toComponents('1.2.3-pre.1+build.1')
+            Parser::toComponents($expected)
         );
     }
 
@@ -42,14 +48,39 @@ class ParserTest extends TestCase
         Parser::toComponents('test');
     }
 
-    public function testToVersion()
+    /**
+     * @dataProvider getValidVersions
+     */
+    public function testToVersion($expected, $major, $minor, $patch, $preRelease, $build)
     {
-        $version = Parser::toVersion('1.2.3-pre.1+build.1');
+        $version = Parser::toVersion($expected);
 
-        $this->assertSame(1, $version->getMajor());
-        $this->assertSame(2, $version->getMinor());
-        $this->assertSame(3, $version->getPatch());
-        $this->assertSame(array('pre', '1'), $version->getPreRelease());
-        $this->assertSame(array('build', '1'), $version->getBuild());
+        $this->assertSame($major, $version->getMajor());
+        $this->assertSame($minor, $version->getMinor());
+        $this->assertSame($patch, $version->getPatch());
+        $this->assertSame($preRelease, $version->getPreRelease());
+        $this->assertSame($build, $version->getBuild());
+    }
+
+    public function getValidVersions()
+    {
+        return array(
+            array('1.2.3', 1, 2, 3, array(), array()),
+
+            array('1.2.3-pre', 1, 2, 3, array('pre'), array()),
+            array('1.2.3--', 1, 2, 3, array('-'), array()),
+            array('1.2.3-pre-', 1, 2, 3, array('pre-'), array()),
+            array('1.2.3-pre-release', 1, 2, 3, array('pre-release'), array()),
+
+            array('1.2.3+build', 1, 2, 3, array(), array('build')),
+            array('1.2.3+-', 1, 2, 3, array(), array('-')),
+            array('1.2.3+build-1', 1, 2, 3, array(), array('build-1')),
+            array('1.2.3+build-not-pre-release', 1, 2, 3, array(), array('build-not-pre-release')),
+
+            array('1.2.3-pre+build', 1, 2, 3, array('pre'), array('build')),
+            array('1.2.3-pre-+build', 1, 2, 3, array('pre-'), array('build')),
+            array('1.2.3-pre.1+build.1', 1, 2, 3, array('pre', '1'), array('build', '1')),
+            array('1.2.3-pre-release.1+build.1', 1, 2, 3, array('pre-release', '1'), array('build', '1')),
+        );
     }
 }
